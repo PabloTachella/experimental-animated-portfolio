@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+:root {
+    /*  -b border
+        -l light
+        -d dark  */
+    --night-top: rgb(69, 51, 89);
+    --night-bottom: rgb(166, 75, 72);
+    --buho: rgb(208, 97, 77);
+    --eye-l: rgb(79, 64,61);
+    --eye-d: rgb(75, 60,57);
+    --face-l: rgb(254, 199, 106);
+    --face-d: rgb(236, 158, 95);
+    --b-face: rgb(226, 152, 94);
+    --beak: rgb(234, 195, 29);
+    --buho-l: rgb(230, 109, 88);
+    --buho-d: rgb(153, 74, 59);
+    --branch-d: rgb(69, 40, 32);
+    --branch-l: rgb(88, 51, 42);
+    --m: rgb(172, 163, 165);
+
+    --font: 'Roboto', sans-serif;
+}

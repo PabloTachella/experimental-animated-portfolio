@@ -1,4 +1,7 @@
+@import url('./Vars.css');
+
 body {
     margin: 0;
-    background-color: red;
+    background: linear-gradient(160deg, var(--night-top), var(--night-bottom));
+    font-family: var(--font);
 }
