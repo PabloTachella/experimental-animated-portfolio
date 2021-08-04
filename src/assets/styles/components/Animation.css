@@ -1,0 +1,119 @@
+.b-animation {
+    /* font-size: 62.5%;  con esta linea me aseguro que 1em sera igual a 10 px */
+    display: flex;
+    align-items: center;
+    height: 100vh;
+    background-color: powderblue;
+}
+
+/* ------------------ cielo ------------------ */
+.sky4 {
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(160deg, var(--night-top), var(--night-top), var(--night-bottom));
+    animation: fade-off 3s linear 1 forwards;
+}
+.sky3 {
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(160deg, var(--night-top), var(--night-bottom)); 
+    animation: fade-off 3s linear 2s 1 forwards;
+}
+.sky2 {
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(160deg, var(--night-top), rgb(172, 163, 165)); 
+    animation: fade-off 4s linear 3s 1 forwards;
+}
+.sky1 {
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(160deg, powderblue, rgb(174, 199, 203));
+    animation: fade-off 2s linear 7s 1 forwards;
+}
+.sky {
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(160deg, powderblue, powderblue); /* (160deg, powderblue, rgb(175, 214, 219)); */
+    animation: fade-off 2s linear 9s 1 forwards;
+}
+
+/* ------------------ estrellas ------------------ */
+.stars {
+    position: absolute;
+    background-size: 25%;
+    background-repeat: repeat;
+    width: 100%;
+    height: 100vh;
+    animation: fade-off 5s linear 1 forwards;
+}
+
+/* ------------------ luna ------------------ */
+.moon{
+    position: absolute;
+    background-size: cover;
+    width: 12em;
+    height: 12em;
+    top: 3em;
+    left: 50em;
+    opacity: .9;
+    transform: rotate(-7deg);
+    animation: fade-off 5s linear 1 forwards;
+}
+
+/* ------------------ sol ------------------ */
+.sun {
+    position: absolute;
+    width: 12em;
+    height: 12em;
+    border-radius: 100%;
+    background: radial-gradient(rgb(255, 255, 170), rgb(255, 255, 128));
+    top: 16em;
+    left: 16em;
+}
+.brightness {
+    position: absolute;
+    top: 100vh;
+    right: -20em;
+    width: 44em;
+    height: 44em;
+    background: radial-gradient(lavender, lavender, powderblue, powderblue);
+    border-radius: 100%;
+    animation: sunrise 6s linear 6s 1 forwards;
+}
+@keyframes fade-off {
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+@keyframes sunrise {
+    0% {
+        opacity: 0;
+    }
+    20%{
+        opacity: .2;
+        transform: translate(-1em, -15em);
+    }
+    40%{
+        opacity: .5;
+        transform: translate(-2em, -28em);
+    }
+    60%{
+        opacity: 1;
+        transform: translate(-8em, -39em);
+    }
+    80%{
+        transform: translate(-14em, -47em);
+    }
+    100%{
+        transform: translate(-21em, -53em);
+    }
+}
