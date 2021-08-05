@@ -4,16 +4,17 @@ import Presentation from '../components/Presentation'
 import Animation from '../components/Animation'
 import '../assets/styles/App.css'
 
-const Home = ({startAnimation}) => {
+const Home = ({ startAnimation }) => {
     return (
         <>
             {startAnimation === false && <Presentation />}
             {startAnimation === true && <Animation />}
         </>
     )
+
 }
 
-const mapStateToProps = state => { 
+const mapStateToProps = state => {
     return {
         startAnimation: state.startAnimation
     }

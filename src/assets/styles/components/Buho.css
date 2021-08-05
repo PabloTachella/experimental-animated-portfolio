@@ -1,0 +1,372 @@
+/* reutilizable */
+.absolute-centered{
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+}
+
+* {
+    margin: 0;
+}
+
+.buho {
+    position: relative;
+    height: 27em;
+    width: 20em;
+    margin-left: 8em;
+}
+.head-and-body {
+    position: relative;
+    height: 30em;
+    width: 20em;
+    transform: translateY(2em);
+}
+
+/* --------------- cabeza --------------- */
+.b-head {
+    position: absolute;
+    background-color: var(--buho);
+    border-radius: 6em 6em 7em 7em;
+    height: 15em;
+    width: 20em;
+    z-index: 6;
+}
+.face_left {
+    position: absolute;
+    background: linear-gradient(var(--face-l), var(--face-d));
+    border-radius: 6em 6em 0 9em;
+    border-color: var(--b-face);
+    border-style: solid;
+    border-width: .2em 0 .2em .4em;
+    height: 13em;
+    width: 9em;
+    left: 1em;
+    top: 1em;
+}
+.face_right {
+    position: absolute;
+    background: linear-gradient(var(--face-l), var(--face-d));
+    border-radius: 6em 6em 9em 0;
+    border-color: var(--b-face);
+    border-style: solid;
+    border-width: .2em .4em .2em 0;
+    height: 13em;
+    width: 9em;
+    right: 1em;
+    top: 1em;
+}
+.eye__eyelid {
+    position: absolute;
+    background: radial-gradient(var(--face-l), var(--buho-l));
+    height: 7.8em;
+    width: 6.2em;
+    border-radius: 50%;
+    top: 2.5em;
+}
+.closed-eye {
+    position: absolute;
+    top:1.5em;
+    width: inherit;
+    height: 3em;
+    border-radius: 100%;
+    border: solid var(--eye-d);
+    border-width: 0 0 0.4em 0;
+    animation: awakening 4s ease 8s 1 normal forwards;
+}
+@keyframes awakening {
+	5% {
+		transform: scaleY(0);
+	}
+    100% {
+        transform: scaleY(0);
+    }
+}
+.eye {
+    /* display: none; */
+    position: absolute;
+    background: radial-gradient(var(--eye-l), var(--eye-d));
+    border: solid var(--b-face);
+    border-width: .5em .1em 0 .2em;
+    height: 7em;
+    width: 6em;
+    border-radius: 50%;
+    top: 2.5em;
+    transform: scaleY(0);
+}
+.awakening-eye {
+    animation: awakening-eye 4s ease 8s 1 normal forwards;
+}
+.blink{
+	animation: blink 4s ease-in-out infinite normal forwards;
+}
+.get-up {
+    animation: get-up 12s linear 3s 1 normal forwards;
+}
+.get-up-belly {
+    animation: get-up-belly 8s linear 1 normal forwards;
+}
+@keyframes get-up-belly {
+    0% {
+        transform: scaleX(1);
+    }
+    10% {
+        transform: scaleX(1.1);
+    }
+    30% {
+        transform: scaleX(1);
+    }
+    40% {
+        transform: scaleX(1.15);
+    }
+    60% {
+        transform: scaleX(1);
+    }
+    80% {
+        transform: scaleX(1.15);
+    }
+    100% {
+        transform: scaleX(1);
+    }
+}
+@keyframes get-up {
+    0% {
+        transform: translateY(2em);
+    }
+    60% {
+        transform: translateY(2em);
+    }
+    75% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+@keyframes awakening-eye {
+	5% {
+		transform: scaleY(0);
+	}
+    10% {
+        transform: scaleY(.4);
+    }
+    30% {
+        transform: scaleY(.8);
+    }
+    40% {
+        transform: scaleY(0);
+    }
+    50% {
+        transform: scaleY(1);
+    }
+    to {
+        transform: scaleY(1);
+    }
+}
+@keyframes blink {
+	0% {
+		transform: scaleY(1);
+	}
+	5% {
+		transform: scaleY(0);
+	}
+	10% {
+		transform: scaleY(1);
+	}
+    100%{
+        transform: scaleY(1);
+    }
+}
+
+
+.eye_left {
+    right: 2em;
+}
+.eye_right {
+    left: 2em;
+}
+.eye__twinkle_top {
+    will-change: transform;    
+    position: absolute;
+    background-color: white;
+    border-radius: 65% 50% 65% 50%;
+    height: 2.5em;
+    width: 2.5em;
+    top: .8em;
+    left: 1em;
+}
+.eye__twinkle_bottom {
+    position: absolute;
+    background-color: white;
+    border-radius: 100%;
+    width: .6em;
+    height: .6em;
+    top: 3.5em;
+    left: .6em;
+    will-change: transform;
+}
+.beak {
+    background-color: var(--beak);
+    top: 8em;
+    height: 1.5em;
+    width: 1.5em;
+    border: solid var(--b-face);
+    border-width: .2em .1em .1em .2em;
+    border-radius:100% 0 0 0; 
+    transform-origin: center;
+    transform: rotate(45deg);
+}
+
+/* --------------- alas --------------- */
+.wing {
+    position: absolute;
+    background-color: var(--buho-d);
+    width: 3em;
+    height: 5em;
+}
+.wing_left {
+    border-radius: 100% 100% 100% 0;
+    top: 14em;
+    left: 5em;
+    transform: skew(-8deg, -13deg) rotate(-2deg);
+}
+.wing_right {
+    top: 14em;
+    right: 5em;
+    border-radius: 100% 100% 0 100%;
+    transform: skew(8deg, 13deg) rotate(2deg);
+}
+
+/* --------------- cuerpo --------------- */
+.body {
+    top: 12em;
+    background-color: var(--buho);
+    height: 10em;
+    width: 9em;
+    border-radius: 50% 50% 47% 47%;
+}
+.head-shadow {
+    top: 2em;
+    background-color: var(--buho-d);
+    opacity: .5;
+    height: 1.5em;
+    width: 8.5em;
+    overflow: hidden;
+    border-radius: 0 0 30% 20%;
+    z-index: 2;
+}
+.belly {
+    top: 1em;
+    background-color: var(--buho-l);
+    height: 8em;
+    width: 7em;
+    border-radius: 50%;
+}
+
+/* --------------- pies --------------- */
+.feet {
+    position: absolute;
+    top: 23em;
+    width: 2em;
+    height: 1em;
+    background-color: var(--beak);
+    border-radius: .8em .8em .5em .5em;
+}
+.feet_left {
+    left: 7em;
+}
+.feet_right {
+    right: 7em;
+}
+
+/* --------------- zzz --------------- */
+.zzz {
+    position: absolute;
+    top: 4em;
+    right: -2.2em;
+    height: 3.7em;
+    width: 2em;
+    color: rosybrown;
+}
+.z1 {
+    position: absolute;
+    bottom: 0;
+    animation: zzz 8s linear 1 normal forwards;
+}
+.z2 {
+    position: absolute;
+    font-size: 1.5rem;
+    top: 22px;
+    right: 15px;
+    animation: zzz 8s linear 1 normal forwards;
+}
+.z3 {
+    position: absolute;
+    font-size: 2.2rem;
+    top: 0;
+    right: 0;
+    animation: zzz 8s linear 1 normal forwards;
+}
+@keyframes zzz {
+    0% {
+        transform: translate(0);
+    }
+    30% {
+        transform: translate(.7em, -1em) scale(1.5);
+        opacity: 0;
+    }
+    31% {
+        transform: translate(0) scale(1);
+    }
+    40% {
+        opacity: 1;
+    }
+    60% {
+        transform: translate(.7em, -1em) scale(1.5);
+        opacity: 0;
+    }
+    61% {
+        transform: translate(0) scale(1);
+    }
+    70% {
+        opacity: 1;
+    }
+    100%{
+        transform: translate(.7em, -1em) scale(1.5);
+        opacity: 0;
+    }
+}
+
+/* --------------- branch --------------- */
+.branchs {
+    position: absolute;
+    top: 24em;
+    left: -8em;
+    perspective: 30em;
+}
+.branch {
+    background: linear-gradient(var(--branch-l), var(--branch-d));
+    transform-style: preserve-3d;
+    border-radius: 0 1em 1em 0;
+}
+.main-branch {
+    height: 1.3em;
+    width: 32em;
+    transform: rotateY(30deg);
+}
+.secundary-branch {
+    position: absolute;
+    height: .9em;
+    width: 10em;
+    left: 2em;
+    transform: rotateY(50deg) rotate(15deg);
+    top: 1.8em;
+}
+.branch__end {
+    position: absolute;
+    right: 0.2em;
+    background-color: var(--face-d);
+    height: inherit;
+    width: .6em;
+    border-radius: 50%;
+}
