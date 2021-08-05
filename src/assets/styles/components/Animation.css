@@ -12,6 +12,8 @@
     width: 100%;
     height: 100vh;
     background: linear-gradient(160deg, var(--night-top), var(--night-top), var(--night-bottom));
+}
+.sky4-a {
     animation: fade-off 3s linear 1 forwards;
 }
 .sky3 {
@@ -19,6 +21,8 @@
     width: 100%;
     height: 100vh;
     background: linear-gradient(160deg, var(--night-top), var(--night-bottom)); 
+}
+.sky3-a {
     animation: fade-off 3s linear 2s 1 forwards;
 }
 .sky2 {
@@ -26,6 +30,8 @@
     width: 100%;
     height: 100vh;
     background: linear-gradient(160deg, var(--night-top), rgb(172, 163, 165)); 
+}
+.sky2-a {
     animation: fade-off 4s linear 3s 1 forwards;
 }
 .sky1 {
@@ -33,13 +39,17 @@
     width: 100%;
     height: 100vh;
     background: linear-gradient(160deg, powderblue, rgb(174, 199, 203));
+}
+.sky1-a {
     animation: fade-off 2s linear 7s 1 forwards;
 }
 .sky {
     position: absolute;
     width: 100%;
     height: 100vh;
-    background: linear-gradient(160deg, powderblue, powderblue); /* (160deg, powderblue, rgb(175, 214, 219)); */
+    background: linear-gradient(160deg, powderblue, powderblue); /* (160deg, powderblue, rgb(175, 214, 219)); */ 
+}
+.sky-a {
     animation: fade-off 2s linear 9s 1 forwards;
 }
 
@@ -50,9 +60,13 @@
     background-repeat: repeat;
     width: 100%;
     height: 100vh;
+}
+.fade-off {
     animation: fade-off 5s linear 1 forwards;
 }
-
+.appear {
+    animation: appear 2s linear 1;
+}
 /* ------------------ luna ------------------ */
 .moon{
     position: absolute;
@@ -63,7 +77,6 @@
     left: 50em;
     opacity: .9;
     transform: rotate(-7deg);
-    animation: fade-off 5s linear 1 forwards;
 }
 
 /* ------------------ sol ------------------ */
@@ -84,7 +97,18 @@
     height: 44em;
     background: radial-gradient(lavender, lavender, powderblue, powderblue);
     border-radius: 100%;
+}
+.brightness-a {
     animation: sunrise 6s linear 6s 1 forwards;
+}
+
+@keyframes appear {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
 @keyframes fade-off {
     50% {

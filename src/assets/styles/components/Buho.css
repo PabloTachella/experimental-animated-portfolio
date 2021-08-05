@@ -21,6 +21,23 @@
     height: 30em;
     width: 20em;
     transform: translateY(2em);
+    opacity: 0;
+}
+.translate-to-right{
+    animation: translate-to-right 1.5s linear 1 normal forwards;
+}
+@keyframes translate-to-right {
+    0% {
+        transform: translate(-30em, 2em);
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        transform: translate(0, 2em);
+        opacity: 1;
+    }
 }
 
 /* --------------- cabeza --------------- */
@@ -72,6 +89,8 @@
     border-radius: 100%;
     border: solid var(--eye-d);
     border-width: 0 0 0.4em 0;
+}
+.closed-eye-a {
     animation: awakening 4s ease 8s 1 normal forwards;
 }
 @keyframes awakening {
@@ -101,7 +120,7 @@
 	animation: blink 4s ease-in-out infinite normal forwards;
 }
 .get-up {
-    animation: get-up 12s linear 3s 1 normal forwards;
+    animation: get-up 15s linear 1 normal forwards;
 }
 .get-up-belly {
     animation: get-up-belly 8s linear 1 normal forwards;
@@ -131,16 +150,18 @@
 }
 @keyframes get-up {
     0% {
+        opacity: 1;
         transform: translateY(2em);
     }
-    60% {
+    70% {
         transform: translateY(2em);
     }
-    75% {
+    80% {
         transform: translateY(0);
     }
     100% {
         transform: translateY(0);
+        opacity: 1;
     }
 }
 @keyframes awakening-eye {
@@ -266,11 +287,12 @@
 /* --------------- pies --------------- */
 .feet {
     position: absolute;
-    top: 23em;
+    top: 21em;
     width: 2em;
     height: 1em;
     background-color: var(--beak);
     border-radius: .8em .8em .5em .5em;
+    opacity: 0;
 }
 .feet_left {
     left: 7em;
@@ -291,25 +313,32 @@
 .z1 {
     position: absolute;
     bottom: 0;
-    animation: zzz 8s linear 1 normal forwards;
+    opacity: 0;
 }
 .z2 {
     position: absolute;
     font-size: 1.5rem;
     top: 22px;
     right: 15px;
-    animation: zzz 8s linear 1 normal forwards;
+    opacity: 0;
 }
 .z3 {
     position: absolute;
     font-size: 2.2rem;
     top: 0;
     right: 0;
+    opacity: 0;
+}
+.zzz-a {
     animation: zzz 8s linear 1 normal forwards;
 }
 @keyframes zzz {
     0% {
         transform: translate(0);
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
     }
     30% {
         transform: translate(.7em, -1em) scale(1.5);
@@ -340,9 +369,10 @@
 /* --------------- branch --------------- */
 .branchs {
     position: absolute;
-    top: 24em;
+    top: 22em;
     left: -8em;
     perspective: 30em;
+    opacity: 0;
 }
 .branch {
     background: linear-gradient(var(--branch-l), var(--branch-d));
