@@ -1,0 +1,90 @@
+.container-bubble {
+    position: absolute;
+    right: -21em;
+    top: 1em;
+    width: 20em;
+    height: 13em;
+    opacity: 0;
+}
+
+.bubble-start {
+    position: absolute;
+    bottom: 3em;
+    width: 2.5em;
+    height: 2.5em;
+    background-color: white;
+    transform: skew(-30deg,-10deg);
+    border-bottom: 4px solid rgb(144, 177, 177);
+}
+.bubble {
+    position: absolute;
+    right: 0;
+    width: 19em;
+    height: inherit;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    border-radius: 100%;
+    border: 4px solid rgb(144, 177, 177);
+}
+
+.bubble__text {
+    margin: 1em 1em 0 1em;
+    text-align: center;
+    font-size: 1.5em;
+    color: darkslategray;
+}
+
+.dots {
+    display: flex;
+    margin-top: 1em;
+}
+.dot {
+    width: 0.3em;
+    height: 0.3em;
+    border-radius: 100%;
+    margin: 0 0.3em;
+    background-color: darkslategray;
+    opacity: 0;
+}
+.dot1-a {
+    animation: dots-a 2s linear 2s infinite forwards;
+}
+.dot2-a {
+    animation: dots-a 2s linear 2.33s infinite forwards;
+}
+.dot3-a {
+    animation: dots-a 2s linear 2.66s infinite forwards;
+}
+@keyframes dots-a {
+    0% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 0;
+    }
+    51% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.appear-text {
+    animation: appear-text 300ms linear 1s 1 forwards;
+}
+@keyframes appear-text {
+    from {
+        transform-origin: bottom left;
+        transform: scale(0);
+        opacity: .5;
+    }
+    to {
+        transform-origin: bottom left;
+        transform: scale(1);
+        opacity: 1;
+    }
+}

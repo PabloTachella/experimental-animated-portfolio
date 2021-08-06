@@ -1,0 +1,7 @@
+.bush-container {
+    position: absolute;
+    width: 20em;
+    height: 10em;
+    margin: auto auto 0;
+    background-color: tomato;
+}

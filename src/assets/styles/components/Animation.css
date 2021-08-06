@@ -1,58 +1,72 @@
+/* reutilizable */
+.fullscreen{
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+}
+
 .b-animation {
     /* font-size: 62.5%;  con esta linea me aseguro que 1em sera igual a 10 px */
     display: flex;
     align-items: center;
     height: 100vh;
-    background-color: powderblue;
+    background-color: white;
 }
 
 /* ------------------ cielo ------------------ */
 .sky4 {
-    position: absolute;
-    width: 100%;
-    height: 100vh;
     background: linear-gradient(160deg, var(--night-top), var(--night-top), var(--night-bottom));
 }
 .sky4-a {
     animation: fade-off 3s linear 1 forwards;
 }
 .sky3 {
-    position: absolute;
-    width: 100%;
-    height: 100vh;
     background: linear-gradient(160deg, var(--night-top), var(--night-bottom)); 
 }
 .sky3-a {
     animation: fade-off 3s linear 2s 1 forwards;
 }
 .sky2 {
-    position: absolute;
-    width: 100%;
-    height: 100vh;
     background: linear-gradient(160deg, var(--night-top), rgb(172, 163, 165)); 
 }
 .sky2-a {
     animation: fade-off 4s linear 3s 1 forwards;
 }
 .sky1 {
-    position: absolute;
-    width: 100%;
-    height: 100vh;
     background: linear-gradient(160deg, powderblue, rgb(174, 199, 203));
 }
 .sky1-a {
     animation: fade-off 2s linear 7s 1 forwards;
 }
 .sky {
-    position: absolute;
-    width: 100%;
-    height: 100vh;
-    background: linear-gradient(160deg, powderblue, powderblue); /* (160deg, powderblue, rgb(175, 214, 219)); */ 
+    background: powderblue; /* (160deg, powderblue, rgb(175, 214, 219)); */
 }
-.sky-a {
-    animation: fade-off 2s linear 9s 1 forwards;
+.darken-sky {
+    background-color: black;
+    opacity: 0;
 }
-
+.appear-darken-sky {
+    animation: appear-darken-sky 1.2s linear 1s 1 forwards;
+}
+@keyframes appear-darken-sky {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: .15;
+    }
+}
+.fade {
+    animation: fade 1.5s linear 1 forwards;
+}
+@keyframes fade {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: .5;
+    }
+}
 /* ------------------ estrellas ------------------ */
 .stars {
     position: absolute;
@@ -65,7 +79,7 @@
     animation: fade-off 5s linear 1 forwards;
 }
 .appear {
-    animation: appear 2s linear 1;
+    animation: appear 2s linear 1 forwards;
 }
 /* ------------------ luna ------------------ */
 .moon{

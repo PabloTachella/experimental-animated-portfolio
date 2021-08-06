@@ -1,11 +1,13 @@
 import React from 'react'
 import '../assets/styles/components/Buho.css'
+import SpeechBubble from './SpeechBubble'
 
 const Buho = () => {
     
     return (
         <div className="buho">
             <div className="head-and-body">
+                <SpeechBubble />
                 <div className="b-head">
                     <div className="b-head__face">
                         <div className="face_left">

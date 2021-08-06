@@ -23,8 +23,12 @@ const Animation = () => {
         let moon = document.getElementsByClassName('moon')[0]
         let brightness = document.getElementsByClassName('brightness')[0]
         let branchs = document.getElementsByClassName('branchs')[0]
+        let darkenSky = document.getElementsByClassName('darken-sky')[0]
+        let containerBubble = document.getElementsByClassName('container-bubble')[0]
+        let textDialogue = document.getElementsByClassName('bubble__text')[0]
+        let dots = document.getElementsByClassName('dot')
 
-        buho.addEventListener("animationend", go, false)
+        buho.addEventListener("animationend", goAnimation, false)
 
         buho.classList.add('translate-to-right')
         feet[0].classList.add('translate-to-right')
@@ -33,9 +37,10 @@ const Animation = () => {
         moon.classList.add('appear')
         branchs.classList.add('translate-to-right')
 
-        function go(ev) {
-            eye[0].addEventListener("animationend", listener, false);
-            eye[1].addEventListener("animationend", listener, false);
+        function goAnimation(ev) {
+            eye[0].addEventListener("animationend", listener, false)
+            eye[1].addEventListener("animationend", listener, false)
+            brightness.addEventListener("animationend", goDialogue, false)
 
             stars.classList.replace('appear', 'fade-off')
             moon.classList.replace('appear', 'fade-off')
@@ -60,20 +65,41 @@ const Animation = () => {
                 eye[0].classList.add('blink')
                 eye[1].classList.add('blink')
             }
+
+            function goDialogue(e) {
+                darkenSky.classList.add('appear-darken-sky')
+                brightness.classList.remove('brightness-a', 'fade')
+                containerBubble.classList.add('appear-text')
+                dots[0].classList.add('dot1-a')
+                dots[1].classList.add('dot2-a')
+                dots[2].classList.add('dot3-a')
+
+                setTimeout(
+                    () => {
+                            Array.prototype.forEach.call(dots, (dot) => {
+                                dot.classList.remove('dot1-a', 'dot2-a', 'dot3-a')
+                                dot.style.opacity = 0 
+                            })
+                            textDialogue.innerHTML = "¿Ya conociste los proyectos realizados por Pablo?"
+                    }, 6000
+                )
+            }
         }
 
     })
     return (
-        <div className="b-animation sky">
-            <div className="sky1"></div>
-            <div className="sky2"></div>
-            <div className="sky3"></div>
-            <div className="sky4"></div>
+        <div className="b-animation">
+            <div className="fullscreen sky"></div>
+            <div className="fullscreen sky1"></div>
+            <div className="fullscreen sky2"></div>
+            <div className="fullscreen sky3"></div>
+            <div className="fullscreen sky4"></div>
             <div style={{ backgroundImage: `url(${stars})` }} className="stars"></div>
             <img src={moon} className="moon"></img>
             <div className="brightness">
                 <div className="sun"></div>
             </div>
+            <div className="fullscreen darken-sky"></div>
             <Buho />
         </div>
     )
