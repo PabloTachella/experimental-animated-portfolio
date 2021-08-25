@@ -1,7 +1,85 @@
-.bush-container {
+.bush {
     position: absolute;
-    width: 20em;
-    height: 10em;
-    margin: auto auto 0;
-    background-color: tomato;
+    background-color: #08ae13;
+    border-top: .5em solid #1c8c1c;
+    bottom: 0;
+}
+.bush-side {
+    width: 6em;
+    height: 6em;
+    border-radius: 50%;
+}
+.bush5 {
+    right: 0;
+}
+
+.bush-center {
+    border-radius: 50% 50% 0 0;
+    width: 6em;
+}
+.bush2 {
+    left: 2.5em;
+    height: 8em;
+}
+.bush3 {
+    left: 7em;
+    height: 11em;
+    z-index: 3;
+}
+.bush4 {
+    right: 2.5em;
+    height: 9em;
+    z-index: 2;
+}
+
+
+.appear-bush {
+    animation: appear-bush 1.5s ease-out 500ms 1 forwards;
+}
+.scale-bush {
+    transform-origin: bottom center;
+    animation: scale-bush 2s linear 2s infinite;
+}
+
+@keyframes appear-bush {
+    0% {
+        opacity: 0;
+        transform: translateY(12em);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(2em);
+    }
+}
+@keyframes scale-bush {
+    0% {
+        transform: skewX(0deg);
+    }
+    2% {
+        transform: skewX(-5deg);
+    }
+    6% {
+        transform: skewX(5deg);
+    }
+    8% {
+        transform: skewX(0deg);
+    }
+    14% {
+        transform: skewX(-4deg);
+    }
+    20% {
+        transform: skewX(4deg);
+    }
+    23% {
+        transform: skewX(0deg);
+    }
+    70% {
+        transform: skewX(0deg);
+    }
+    90% {
+        transform: skewX(0deg);
+    }
+    100% {
+        transform: skewX(0deg);
+    }
 }

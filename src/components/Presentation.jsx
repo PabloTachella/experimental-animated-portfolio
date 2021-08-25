@@ -1,6 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import { startAnimation } from '../actions'
+import Button from './Button'
 import '../assets/styles/components/Presentation.css'
 
 const Presentation = ({startAnimation}) => {
@@ -17,12 +18,9 @@ const Presentation = ({startAnimation}) => {
                     Veamos un poco de lo que<br />
                     podemos hacer utilizando solo CSS
                 </p>
-                <button 
-                    type="button"
-                    className="b-presentation__button"
-                    onClick={() => startAnimation(true)}
-                    >COMENCEMOS
-                </button>
+                <div className="b-presentation__container-button">
+                    <Button click={() => startAnimation(true)} text="COMENCEMOS"/>
+                </div>
             </div>
         </div>
     )

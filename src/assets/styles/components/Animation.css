@@ -7,8 +7,8 @@
 
 .b-animation {
     /* font-size: 62.5%;  con esta linea me aseguro que 1em sera igual a 10 px */
-    display: flex;
-    align-items: center;
+    position: relative;
+    width: 100%;
     height: 100vh;
     background-color: white;
 }
@@ -17,26 +17,14 @@
 .sky4 {
     background: linear-gradient(160deg, var(--night-top), var(--night-top), var(--night-bottom));
 }
-.sky4-a {
-    animation: fade-off 3s linear 1 forwards;
-}
 .sky3 {
     background: linear-gradient(160deg, var(--night-top), var(--night-bottom)); 
-}
-.sky3-a {
-    animation: fade-off 3s linear 2s 1 forwards;
 }
 .sky2 {
     background: linear-gradient(160deg, var(--night-top), rgb(172, 163, 165)); 
 }
-.sky2-a {
-    animation: fade-off 4s linear 3s 1 forwards;
-}
 .sky1 {
     background: linear-gradient(160deg, powderblue, rgb(174, 199, 203));
-}
-.sky1-a {
-    animation: fade-off 2s linear 7s 1 forwards;
 }
 .sky {
     background: powderblue; /* (160deg, powderblue, rgb(175, 214, 219)); */
@@ -45,28 +33,6 @@
     background-color: black;
     opacity: 0;
 }
-.appear-darken-sky {
-    animation: appear-darken-sky 1.2s linear 1s 1 forwards;
-}
-@keyframes appear-darken-sky {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: .15;
-    }
-}
-.fade {
-    animation: fade 1.5s linear 1 forwards;
-}
-@keyframes fade {
-    from {
-        opacity: 1;
-    }
-    to {
-        opacity: .5;
-    }
-}
 /* ------------------ estrellas ------------------ */
 .stars {
     position: absolute;
@@ -74,12 +40,6 @@
     background-repeat: repeat;
     width: 100%;
     height: 100vh;
-}
-.fade-off {
-    animation: fade-off 5s linear 1 forwards;
-}
-.appear {
-    animation: appear 2s linear 1 forwards;
 }
 /* ------------------ luna ------------------ */
 .moon{
@@ -112,10 +72,65 @@
     background: radial-gradient(lavender, lavender, powderblue, powderblue);
     border-radius: 100%;
 }
+
+.button-backgound {
+    position: absolute;
+    top: 1em;
+    right: 1em;
+    width: 5em;
+    height: 2em;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+}
+
+
+.sky4-a {
+    animation: fade-off 3s linear 1 forwards;
+}
+.sky3-a {
+    animation: fade-off 3s linear 2s 1 forwards;
+}
+.sky2-a {
+    animation: fade-off 4s linear 3s 1 forwards;
+}
+.sky1-a {
+    animation: fade-off 2s linear 7s 1 forwards;
+}
+.appear-darken-sky {
+    animation: appear-darken-sky 1.2s linear 1s 1 forwards;
+}
+.fade {
+    animation: fade 1.5s linear 1 forwards;
+}
+.fade-off {
+    animation: fade-off 5s linear 1 forwards;
+}
+.appear {
+    animation: appear 2s linear 1 forwards;
+}
 .brightness-a {
     animation: sunrise 6s linear 6s 1 forwards;
 }
+.brightness-a-skip {
+    animation: sunrise 1ms forwards;
+}
 
+@keyframes appear-darken-sky {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: .15;
+    }
+}
+@keyframes fade {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: .5;
+    }
+}
 @keyframes appear {
     from {
         opacity: 0;
@@ -153,5 +168,74 @@
     }
     100%{
         transform: translate(-21em, -53em);
+    }
+}
+
+
+.bush-container {
+    position: absolute;
+    width: 20em;
+    height: 12em;
+    bottom: 0;
+    right: 20%;
+    opacity: 0;
+    transform: translateY(12em);
+}
+
+.bush-container:hover {
+    cursor: pointer;
+}
+.bush-container:hover .rabbit1{
+    animation: appear-rabbit1 500ms linear 1 forwards;
+}
+.bush-container:hover .rabbit2{
+    animation: appear-rabbit2 500ms linear 1 forwards;
+}
+.bush-container:hover .rabbit3{
+    animation: appear-rabbit3 500ms linear 1 forwards;
+}
+
+.rabbit-container {
+    position: absolute;
+    height: 10em;
+    width: 4em;
+    font-size: 22px;
+}
+.rabbit1 {
+    transform: rotate(-20deg) translateY(10em);
+    left: -0.4em;
+}
+.rabbit2 {
+    transform: rotate(2deg) translateY(10em);
+    left: 5.3em;
+    top: -3.4em;
+}
+.rabbit3 {
+    transform: rotate(24deg) translateY(10em);
+    right: -0.8em;
+}
+
+@keyframes appear-rabbit1 {
+    from {
+        transform: translateY(6em);
+    }
+    to {
+        transform: rotate(-20deg) translateY(0);
+    }
+}
+@keyframes appear-rabbit2 {
+    from {
+        transform: translateY(6em);
+    }
+    to {
+        transform: rotate(2deg) translateY(0);
+    }
+}
+@keyframes appear-rabbit3 {
+    from {
+        transform: translateY(6em);
+    }
+    to {
+        transform: rotate(24deg) translateY(0);
     }
 }

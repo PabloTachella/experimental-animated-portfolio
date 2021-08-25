@@ -1,0 +1,102 @@
+/* ----------- rabbit ----------- */
+.rabbit {
+	position: absolute;
+	width: 4em;
+    height: 8em;
+	background-color: rgb(0, 0, 0, 0);
+}
+.ear__outer {
+	position: absolute;
+	background-color: var(--b-rabbit);
+	border-radius: 90%;
+	height: 2.5em;
+	width: 1em;
+}
+.ear__inner{
+	background-color: var(--ear-inner);
+	border-radius: 90%;
+	margin: 0.5em auto;
+	width: 0.5em;
+	height: 2em;
+}
+.ear__outer_left {
+	left: 0.6em;
+}
+.ear__outer_right {
+	right: 0.6em;
+}
+.rabbit__head {
+	background-color: var(--b-rabbit);
+	border-radius: 100%;
+	box-shadow: 0 0.7em 1em rgb(0, 0, 0, 0.2), 0 0.5em 0.7em rgb(0, 0, 0, 0.15);
+	display: flex;
+	justify-content: center;
+	position: absolute;
+	top: 2em;
+	height: 2.5em;
+	width: 4em;
+}
+.rabbit__eye {
+	animation-name: rabbit-blink;
+	animation-duration: 1.3s;
+	animation-iteration-count: infinite;
+	background-color: black;
+	border-radius: 100%;
+	height: 0.5em;
+	margin: 0.6em 0.25em;
+	width: 0.25em;
+}
+.rabbit__eye_twinkle {
+	background-color: white;
+	height: 0.13em;
+	width: 0.13em;
+}
+
+.rabbit__nose {
+    position: absolute;
+    height: 0.3em;
+    width: 0.3em;
+    top: 1.2em;
+    left: 1.85em;
+    background-color: var(--ear-inner);
+    transform: rotate(45deg);
+    border-radius: 100% 10% 20%;
+}
+.rabbit__mouth {
+    position: absolute;
+    height: 0.4em;
+    width: 0.5em;
+    background-color: rgba(0, 0, 0, 0);
+    border-radius: 50% 50% 80% 80%;
+    border-bottom: 0.06em solid var(--ear-inner);
+    border-left: 0.04em solid var(--ear-inner);
+    border-right: 0.04em solid var(--ear-inner);
+    top: 1.35em;
+}
+.rabbit__mouth_left {
+    left: 1.4em;
+}
+.rabbit__mouth_right {
+    right: 1.4em;
+}
+
+.rabbit__body {
+    position: absolute;
+    width: 4em;
+    height: 4em;
+    background-color: var(--b-rabbit);
+    border-radius: 80% 80% 0 0;
+    bottom: 0;
+}
+
+@keyframes rabbit-blink {
+	0% {
+		transform: scaleY(1);
+	}
+	5% {
+		transform: scaleY(0.2);
+	}
+	10% {
+		transform: scaleY(1);
+	}
+}

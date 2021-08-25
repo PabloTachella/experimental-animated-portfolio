@@ -76,6 +76,9 @@
 .appear-text {
     animation: appear-text 300ms linear 1s 1 forwards;
 }
+.appear-text-skip {
+    animation: appear-text 300ms linear 1 forwards;
+}
 @keyframes appear-text {
     from {
         transform-origin: bottom left;
