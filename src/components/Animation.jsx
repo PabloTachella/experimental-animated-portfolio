@@ -48,11 +48,11 @@ const Animation = () => {
             eye[1].addEventListener("animationend", listener, false)
             brightness.addEventListener("animationend", goDialogue, false)
 
-            if(!clickedSkip) {
+            if (!clickedSkip) {
                 stars.classList.replace('appear', 'fade-off')
                 moon.classList.replace('appear', 'fade-off')
                 buho.classList.replace('translate-to-right', 'get-up')
-    
+
                 closedEye[0].classList.add('closed-eye-a')
                 closedEye[1].classList.add('closed-eye-a')
                 eye[0].classList.add('awakening-eye')
@@ -68,29 +68,29 @@ const Animation = () => {
                 sky4.classList.add('sky4-a')
                 brightness.classList.add('brightness-a')
             }
-                
+
             function goDialogue(e) {
                 darkenSky.classList.add('appear-darken-sky')
-                
-                if(!clickedSkip) {
+
+                if (!clickedSkip) {
                     brightness.classList.remove('brightness-a', 'fade')
                     containerBubble.classList.add('appear-text')
                     dots[0].classList.add('dot1-a')
                     dots[1].classList.add('dot2-a')
                     dots[2].classList.add('dot3-a')
-    
+
                     setTimeout(
                         () => {
-                                Array.prototype.forEach.call(dots, (dot) => {
-                                    dot.classList.remove('dot1-a', 'dot2-a', 'dot3-a')
-                                    dot.style.opacity = 0 
-                                })
-                                textDialogue.textContent = "¿Ya conociste los proyectos realizados por Pablo?"
-                                bushContainer.classList.add('appear-bush')
-    
-                                Array.prototype.forEach.call(bushs, (bush) => {
-                                    bush.classList.add('scale-bush')
-                                })
+                            Array.prototype.forEach.call(dots, (dot) => {
+                                dot.classList.remove('dot1-a', 'dot2-a', 'dot3-a')
+                                dot.style.opacity = 0
+                            })
+                            textDialogue.textContent = "¿Ya conociste los proyectos realizados por Pablo?"
+                            bushContainer.classList.add('appear-bush')
+
+                            Array.prototype.forEach.call(bushs, (bush) => {
+                                bush.classList.add('scale-bush')
+                            })
                         }, 6000
                     )
                 }
@@ -102,7 +102,39 @@ const Animation = () => {
             }
 
         }
+
+
+        /* ------------------ Projects ------------------ */
+
+        bushContainer.addEventListener('click', scrollProjects)
+        const rabbits = document.querySelectorAll('.rabbit-container')
+
+        function scrollProjects() {
+
+            /* Mantengo posicionados los conejos por más que deje de hacerle hover al arbusto
+            que es lo que los hace asomarse en un principio */
+            rabbits[0].classList.add('rabbit1-position')
+            rabbits[1].classList.add('rabbit2-position')
+            rabbits[2].classList.add('rabbit3-position')
+
+            let screenHeight = screen.height
+            const screenshots = document.querySelectorAll('.screenshot')
+
+            screenshots.forEach(screenshot => screenshot.classList.add('screenshot-a'))
+
+            setTimeout(() => {
+                window.scroll({
+                    top: screenHeight,
+                    left: 0,
+                    behavior: 'smooth'
+                })
+                bushContainer.style.display = 'none'
+            }, 1300)
+
+        }
     })
+
+    /* -------- Omitir animación -------- */
     function skip() {
         clickedSkip = true
         let buho = document.getElementsByClassName('head-and-body')[0]
@@ -127,7 +159,7 @@ const Animation = () => {
         let textDialogue = document.getElementsByClassName('bubble__text')[0]
         let dots = document.getElementsByClassName('dot')
         let bushContainer = document.getElementsByClassName('bush-container')[0]
-        let bushs = document.getElementsByClassName('bush')
+        let bushs = document.querySelectorAll('.bush')
 
         sky1.remove()
         sky2.remove()
@@ -136,7 +168,8 @@ const Animation = () => {
         moon.remove()
         stars.remove()
 
-        if(buho.classList.contains('translate-to-right')) {
+        /* Si presiono el botón de saltar y aún no terminó de posicionarse el buho */
+        if (buho.classList.contains('translate-to-right')) {
             buho.classList.replace('translate-to-right', 'get-up-skip')
             feet[0].classList.replace('translate-to-right', 'translate-to-right-skip')
             feet[1].classList.replace('translate-to-right', 'translate-to-right-skip')
@@ -167,44 +200,53 @@ const Animation = () => {
         containerBubble.classList.add('appear-text-skip')
         textDialogue.textContent = "¿Ya conociste los proyectos realizados por Pablo?"
         bushContainer.classList.add('appear-bush')
-        
-        Array.prototype.forEach.call(bushs, (bush) => {
+
+        bushs.forEach(bush => {
             bush.classList.add('scale-bush')
         })
     }
+
     return (
-        <div className="b-animation">
-            <div className="fullscreen sky"></div>
-            <div className="fullscreen sky1"></div>
-            <div className="fullscreen sky2"></div>
-            <div className="fullscreen sky3"></div>
-            <div className="fullscreen sky4"></div>
-            <div style={{ backgroundImage: `url(${stars})` }} className="stars"></div>
-            <img src={moon} className="moon"></img>
-            <div className="brightness">
-                <div className="sun"></div>
-            </div>
-            <div className="fullscreen darken-sky"></div>
-
-            <div className="button-backgound">
-                <Button click={() => skip()} text="Saltar"/>
-            </div>
-
-            <Buho />
-
-            <div className="bush-container">
-                <div className="rabbit-container rabbit1">
-                    <Rabbit />
+        <>
+            <section className="b-animation">
+                <div className="fullscreen sky"></div>
+                <div className="fullscreen sky1"></div>
+                <div className="fullscreen sky2"></div>
+                <div className="fullscreen sky3"></div>
+                <div className="fullscreen sky4"></div>
+                <div style={{ backgroundImage: `url(${stars})` }} className="stars"></div>
+                <img src={moon} className="moon"></img>
+                <div className="brightness">
+                    <div className="sun"></div>
                 </div>
-                <div className="rabbit-container rabbit2">
-                    <Rabbit />
+                <div className="fullscreen darken-sky"></div>
+
+                <div className="button-backgound">
+                    <Button click={() => skip()} text="Saltar" />
                 </div>
-                <div className="rabbit-container rabbit3">
-                    <Rabbit />
+
+                <Buho />
+
+                <div className="bush-container">
+                    <div className="rabbit-container rabbit1">
+                        <Rabbit />
+                        <div className="screenshot"></div>
+                    </div>
+                    <div className="rabbit-container rabbit2">
+                        <Rabbit />
+                        <div className="screenshot"></div>
+                    </div>
+                    <div className="rabbit-container rabbit3">
+                        <Rabbit />
+                        <div className="screenshot"></div>
+                    </div>
+                    <Bush />
                 </div>
-                <Bush />
-            </div>
-        </div>
+            </section>
+            <section className="container-projects">
+
+            </section>
+        </>
     )
 }
 

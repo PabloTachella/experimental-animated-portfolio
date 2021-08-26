@@ -215,6 +215,18 @@
     right: -0.8em;
 }
 
+/* Clases necesarias para mantener posicionados los conejos por más que deje de hacerle hover al arbusto
+    que es lo que los hace asomarse en un principio (una vez clickeado el arbusto) */
+.rabbit1-position{
+    transform: rotate(-20deg) translateY(0)
+}
+.rabbit2-position{
+    transform: rotate(2deg) translateY(0)
+}
+.rabbit3-position{
+    transform: rotate(24deg) translateY(0)
+}
+
 @keyframes appear-rabbit1 {
     from {
         transform: translateY(6em);
@@ -239,3 +251,52 @@
         transform: rotate(24deg) translateY(0);
     }
 }
+
+.screenshot {
+    position: absolute;
+    width: 4em;
+    height: 3em;
+    top: 4em;
+    background-color: red;
+}
+.screenshot-a {
+    animation: screenshot-a 1.6s ease 1;
+}
+
+@keyframes screenshot-a {
+    0% {
+        transform: translate(0);
+        opacity: 1;
+    }
+    60% {
+        transform: translate(-4em, -4em);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(-7em, 8em);
+        opacity: 0;
+    }
+}
+
+/* .transition-animation-projects {
+    width: 100%;
+    height: 50vh;
+    background: linear-gradient(var(--buho-d), var(--buho-d), rgb(121, 64, 80));
+} */
+.container-projects {
+    width: 100%;
+    height: 100vh;
+}
+
+/* .disappear-a {
+    animation: appear 10ms linear 1.2s 1 reverse forwards;
+}
+
+@keyframes disappear {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(15em);
+    }
+} */
