@@ -38,6 +38,7 @@
     font-size: 1.4em;
 }
 .b-presentation__container-button {
+    position: relative;
     width: 30vw;
     height: 40px;
     margin: 5px;

@@ -1,5 +1,6 @@
 .b-button {
     position: absolute;
+    left: 0;
     width: inherit;
     height: inherit;
     background-color: transparent;

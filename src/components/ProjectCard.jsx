@@ -1,13 +1,22 @@
 import React from 'react'
-import '../assets/styles/components/ProjectCard'
+import Button from './Button'
+import '../assets/styles/components/ProjectCard.css'
 
-const ProjectCard = () => {
+const ProjectCard = ({ title, screenshot }) => {
+    console.log(title)
     return(
         <div className="b-card">
-            <h3 className="b-card__title">Titulo del proyecto</h3>
-            <div className="b-card__screenshot"></div>
+            <img className="b-card__screenshot" src={screenshot}></img>
+            <h3 className="b-card__title">{title}</h3>
             <div className="b-technology-icons"></div>
-            <div className="b-card__buttons"></div>
+            <div className="b-card__buttons">
+                <div className="b-card__button b-card__button_repository">
+                    <Button text="Repositorio" />
+                </div>
+                <div className="b-card__button b-card__button_deploy">
+                    <Button text="Ver" />    
+                </div>
+            </div>
         </div>
     )
 }

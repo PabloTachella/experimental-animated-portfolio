@@ -278,25 +278,40 @@
     }
 }
 
-/* .transition-animation-projects {
-    width: 100%;
-    height: 50vh;
-    background: linear-gradient(var(--buho-d), var(--buho-d), rgb(121, 64, 80));
-} */
-.container-projects {
-    width: 100%;
+.b-projects {
+    display: flex;
+    align-items: center;
+    width: 85%;
     height: 100vh;
+    margin: 0 auto;
+}
+.container-projects {
+    overflow: hidden;
+    width: 94%;
+}
+.container-projects_scrollable {
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin: 0 auto;
+    white-space: nowrap;
+    transition:left 0.4s, right 0.4s;
 }
 
-/* .disappear-a {
-    animation: appear 10ms linear 1.2s 1 reverse forwards;
+.projects__button-scroll {
+    position: relative;
+    width: 1em;
+    height: 1em;
+    background-color: rgba(255, 255, 255, 0);
+    transform: rotate(45deg);
 }
-
-@keyframes disappear {
-    0% {
-        transform: translateY(0);
-    }
-    100% {
-        transform: translateY(15em);
-    }
-} */
+.projects__previous-button {
+    border-left: 2px solid white;
+    border-bottom: 2px solid white;
+    left: -1em;
+}
+.projects__next-button {
+    border-top: 2px solid white;
+    border-right: 2px solid white;
+    right: -1em;
+}

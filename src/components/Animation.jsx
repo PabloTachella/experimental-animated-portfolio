@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react'
+import { connect } from 'react-redux'
 import Buho from './Buho'
 import Bush from './Bush'
 import moon from '../assets/static/moon.png'
@@ -6,8 +7,9 @@ import stars from '../assets/static/stars.png'
 import Button from './Button'
 import Rabbit from './Rabbit'
 import '../assets/styles/components/Animation.css'
+import ProjectCard from './ProjectCard'
 
-const Animation = () => {
+const Animation = ({ projects }) => {
     let clickedSkip = false
     useEffect(() => {
         let buho = document.getElementsByClassName('head-and-body')[0]
@@ -104,7 +106,7 @@ const Animation = () => {
         }
 
 
-        /* ------------------ Projects ------------------ */
+        /* ------------------ Scroll to Projects ------------------ */
 
         bushContainer.addEventListener('click', scrollProjects)
         const rabbits = document.querySelectorAll('.rabbit-container')
@@ -131,6 +133,36 @@ const Animation = () => {
                 bushContainer.style.display = 'none'
             }, 1300)
 
+
+            /* ------------------ Projects ------------------ */
+    
+            const previousButton = document.querySelector('.projects__previous-button')
+            const nextButton = document.querySelector('.projects__next-button')
+            const cards = document.getElementsByClassName('b-card')
+            const firstCard = cards[0]
+            const containerScrollable = document.querySelector('.container-projects_scrollable')
+    
+            let widthCard = firstCard.clientWidth * 1.1 /* el margin-right es 0.1 del width */
+            let countScroll = 0
+            let amountCards = cards.length
+            console.log(amountCards)
+    
+            previousButton.addEventListener('click', previousCard)
+            nextButton.addEventListener('click', nextCard)
+            
+            containerScrollable.style.left = '0px' /* Esta linea corrige un primer desplazamiento sin transition */
+            function nextCard() {
+                if(-amountCards + 2 < countScroll) {
+                    countScroll--
+                    containerScrollable.style.left = `${countScroll * widthCard}px`
+                }
+            }
+            function previousCard() {
+                if(countScroll < 0) {
+                    countScroll++
+                    containerScrollable.style.left = `${countScroll * widthCard}px`
+                }
+            }
         }
     })
 
@@ -243,11 +275,28 @@ const Animation = () => {
                     <Bush />
                 </div>
             </section>
-            <section className="container-projects">
 
+            <section className="b-projects">
+                <div className="projects__previous-button projects__button-scroll"></div>
+
+                <div className="container-projects">
+                    <div className="container-projects_scrollable">
+                        {projects.map(project =>
+                            <ProjectCard key={project.id} {...project} />
+                        )}
+                    </div>
+                </div>
+
+                <div className="projects__next-button projects__button-scroll"></div>
             </section>
         </>
     )
 }
 
-export default Animation
+const mapStateToProps = state => {
+    return {
+        projects: state.projects
+    }
+}
+
+export default connect(mapStateToProps, null)(Animation)

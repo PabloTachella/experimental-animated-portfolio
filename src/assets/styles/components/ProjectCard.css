@@ -1,0 +1,47 @@
+.b-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 20em;
+    height: 22em;
+    background: rgba(255, 255, 255, 0.1);
+    /* border: 1px solid white; */
+    border-radius: 1em;
+    color: var(--beak);
+    text-align: center;
+    margin-right: 2em; /* el margin-right debe ser 0.1 del width para un scroll correcto */
+}
+
+.b-card__title {
+    font-size: 1.5em;
+}
+
+.b-card__screenshot {
+    border-radius: 1em 1em 0 0;
+    margin-bottom: 1em;
+    height: 11em;
+}
+
+.b-technology-icons {
+    height: 4em;
+    width: 100%;
+    margin: 0.5em 0;
+}
+
+.b-card__buttons {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 1em;
+}
+.b-card__button {
+    position: relative;
+    width: 10vw;
+    height: 2em;
+}
+
+/* @media (max-width: 600px) {
+    .b-card {
+        font-size: 8px;
+    }
+} */
