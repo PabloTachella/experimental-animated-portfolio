@@ -291,8 +291,10 @@
     top: 0;
     right: 0;
     z-index: 2;
-    height: 200vh;
+    height: 300vh;
 }
+
+/* ------------ Projects ------------- */
 
 .b-projects {
     display: flex;
@@ -333,4 +335,11 @@
     border-top: 2px solid white;
     border-right: 2px solid white;
     right: -1em;
+}
+
+
+/* ----------------- Profile ------------------ */
+
+.b-profile {
+    height: 100vh;
 }
