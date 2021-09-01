@@ -1,3 +1,8 @@
+.page {
+    position: relative;
+    width: 100%;
+}
+
 /* reutilizable */
 .fullscreen{
     position: absolute;
@@ -278,6 +283,17 @@
     }
 }
 
+/* ------------ Navbar ------------- */
+
+.container-navbar {
+    display: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 2;
+    height: 200vh;
+}
+
 .b-projects {
     display: flex;
     align-items: center;
@@ -295,7 +311,7 @@
     align-items: center;
     margin: 0 auto;
     white-space: nowrap;
-    transition:left 0.4s, right 0.4s;
+    transition: left 0.4s, right 0.4s;
 }
 
 .projects__button-scroll {
@@ -304,6 +320,9 @@
     height: 1em;
     background-color: rgba(255, 255, 255, 0);
     transform: rotate(45deg);
+}
+.projects__button-scroll:hover {
+    cursor: pointer;
 }
 .projects__previous-button {
     border-left: 2px solid white;

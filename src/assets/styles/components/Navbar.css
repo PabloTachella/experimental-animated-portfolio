@@ -1,0 +1,55 @@
+.b-navbar {
+    position: sticky;
+    height: 100vh;
+    width: 5em;
+    background-color: rgba(255, 255, 255, 0.5);
+    top: -1px;
+    transition: 0.5s all;
+    transform: translateX(4.5em);
+    opacity: 0.4;
+}
+.b-navbar:hover {
+    transform: translateX(0);
+    opacity: 0.7;
+}
+
+.b-navbar__list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100vh;
+    width: 5em;
+    padding: 0;
+}
+
+.b-navbar__item {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 5em;
+    width: 5em;
+    margin: 1em 0;
+}
+.b-navbar__item:hover {
+    cursor: pointer;
+}
+.b-navbar__marker {
+    position: absolute;
+    width: 0.5em;
+    height: inherit;
+    background-color: rgb(31, 31, 31);
+    top: 0;
+    left: 0;
+    opacity: 0;
+}
+
+.b-navbar__icons {
+    width: 3em;
+}
+
+.b-navbar__text {
+    font-size: 0.7em;
+}

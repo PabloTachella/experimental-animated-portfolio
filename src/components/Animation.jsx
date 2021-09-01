@@ -6,12 +6,16 @@ import moon from '../assets/static/moon.png'
 import stars from '../assets/static/stars.png'
 import Button from './Button'
 import Rabbit from './Rabbit'
+import Navbar from './Navbar'
 import '../assets/styles/components/Animation.css'
 import ProjectCard from './ProjectCard'
 
 const Animation = ({ projects }) => {
+
     let clickedSkip = false
+
     useEffect(() => {
+
         let buho = document.getElementsByClassName('head-and-body')[0]
         let body = document.getElementsByClassName('body')[0]
         let feet = document.getElementsByClassName('feet')
@@ -34,7 +38,13 @@ const Animation = ({ projects }) => {
         let textDialogue = document.getElementsByClassName('bubble__text')[0]
         let dots = document.getElementsByClassName('dot')
         let bushContainer = document.getElementsByClassName('bush-container')[0]
-        let bushs = document.getElementsByClassName('bush')
+        let bushs = document.querySelectorAll('.bush')
+
+        const skipButton = document.querySelector('#skip')
+        
+        const navbar = document.querySelector('.container-navbar')
+        const markersNavbar = document.querySelectorAll('.b-navbar__marker')
+        const navbarItems = document.querySelectorAll('.b-navbar__item')
 
         buho.addEventListener("animationend", goAnimation, false)
 
@@ -45,10 +55,12 @@ const Animation = ({ projects }) => {
         moon.classList.add('appear')
         branchs.classList.add('translate-to-right')
 
-        function goAnimation(ev) {
-            eye[0].addEventListener("animationend", listener, false)
-            eye[1].addEventListener("animationend", listener, false)
-            brightness.addEventListener("animationend", goDialogue, false)
+
+        function goAnimation() {
+
+            eye[0].addEventListener("animationend", blinkEyes)
+            eye[1].addEventListener("animationend", blinkEyes)
+            brightness.addEventListener("animationend", goDialogue)
 
             if (!clickedSkip) {
                 stars.classList.replace('appear', 'fade-off')
@@ -71,7 +83,8 @@ const Animation = ({ projects }) => {
                 brightness.classList.add('brightness-a')
             }
 
-            function goDialogue(e) {
+            function goDialogue() {
+
                 darkenSky.classList.add('appear-darken-sky')
 
                 if (!clickedSkip) {
@@ -93,18 +106,25 @@ const Animation = ({ projects }) => {
                             Array.prototype.forEach.call(bushs, (bush) => {
                                 bush.classList.add('scale-bush')
                             })
+
+                            skipButton.remove()
+                            navbar.style.display = 'block'
+                            markersNavbar[0].style.opacity = '1'
                         }, 6000
                     )
                 }
             }
 
-            function listener(e) {
+            function blinkEyes() {
                 eye[0].classList.add('blink')
                 eye[1].classList.add('blink')
             }
 
         }
 
+        navbarItems[1].addEventListener('click', scrollProjects)
+        
+        let screenHeight = screen.height
 
         /* ------------------ Scroll to Projects ------------------ */
 
@@ -119,7 +139,6 @@ const Animation = ({ projects }) => {
             rabbits[1].classList.add('rabbit2-position')
             rabbits[2].classList.add('rabbit3-position')
 
-            let screenHeight = screen.height
             const screenshots = document.querySelectorAll('.screenshot')
 
             screenshots.forEach(screenshot => screenshot.classList.add('screenshot-a'))
@@ -130,43 +149,81 @@ const Animation = ({ projects }) => {
                     left: 0,
                     behavior: 'smooth'
                 })
+
                 bushContainer.style.display = 'none'
+                markersNavbar[0].style.opacity = '0'
+                markersNavbar[1].style.opacity = '1'
+
+                rabbits[0].classList.remove('rabbit1-position')
+                rabbits[1].classList.remove('rabbit2-position')
+                rabbits[2].classList.remove('rabbit3-position')
+                screenshots.forEach(screenshot => screenshot.classList.remove('screenshot-a'))
+
+                navbarItems[0].addEventListener('click', scrollHome)
+                navbarItems[1].removeEventListener('click', scrollProjects)
             }, 1300)
 
 
             /* ------------------ Projects ------------------ */
-    
+
             const previousButton = document.querySelector('.projects__previous-button')
             const nextButton = document.querySelector('.projects__next-button')
             const cards = document.getElementsByClassName('b-card')
             const firstCard = cards[0]
             const containerScrollable = document.querySelector('.container-projects_scrollable')
-    
+
             let widthCard = firstCard.clientWidth * 1.1 /* el margin-right es 0.1 del width */
             let countScroll = 0
             let amountCards = cards.length
-            console.log(amountCards)
-    
+
             previousButton.addEventListener('click', previousCard)
             nextButton.addEventListener('click', nextCard)
-            
+
             containerScrollable.style.left = '0px' /* Esta linea corrige un primer desplazamiento sin transition */
             function nextCard() {
-                if(-amountCards + 2 < countScroll) {
+                if (-amountCards + 2 < countScroll) {
                     countScroll--
+                    containerScrollable.style.left = `${countScroll * widthCard}px`
+                } else {
+                    countScroll = 0
                     containerScrollable.style.left = `${countScroll * widthCard}px`
                 }
             }
             function previousCard() {
-                if(countScroll < 0) {
+                if (countScroll < 0) {
                     countScroll++
                     containerScrollable.style.left = `${countScroll * widthCard}px`
                 }
             }
         }
+
+        /* ------------------ Scroll to Home ------------------ */
+
+        function scrollHome() {
+
+            window.scroll({
+                top: 0,
+                left: 0,
+                behavior: 'smooth'
+            })
+
+            bushContainer.style.display = 'block'
+            bushContainer.classList.add('appear-bush')
+            bushs.forEach(bush => {
+                bush.classList.add('scale-bush')
+            })
+
+            markersNavbar[1].style.opacity = '0'
+            markersNavbar[0].style.opacity = '1'
+
+            navbarItems[1].addEventListener('click', scrollProjects)
+
+        }
     })
 
-    /* -------- Omitir animación -------- */
+
+    /* -------- Skip animation -------- */
+
     function skip() {
         clickedSkip = true
         let buho = document.getElementsByClassName('head-and-body')[0]
@@ -193,12 +250,21 @@ const Animation = ({ projects }) => {
         let bushContainer = document.getElementsByClassName('bush-container')[0]
         let bushs = document.querySelectorAll('.bush')
 
+        const skipButton = document.querySelector('#skip')
+        
+        const navbar = document.querySelector('.container-navbar')
+        const markersNavbar = document.querySelectorAll('.b-navbar__marker')
+
+        skipButton.remove()
         sky1.remove()
         sky2.remove()
         sky3.remove()
         sky4.remove()
         moon.remove()
         stars.remove()
+
+        navbar.style.display = 'block'
+        markersNavbar[0].style.opacity = '1'
 
         /* Si presiono el botón de saltar y aún no terminó de posicionarse el buho */
         if (buho.classList.contains('translate-to-right')) {
@@ -239,7 +305,7 @@ const Animation = ({ projects }) => {
     }
 
     return (
-        <>
+        <div className="page">
             <section className="b-animation">
                 <div className="fullscreen sky"></div>
                 <div className="fullscreen sky1"></div>
@@ -253,8 +319,8 @@ const Animation = ({ projects }) => {
                 </div>
                 <div className="fullscreen darken-sky"></div>
 
-                <div className="button-backgound">
-                    <Button click={() => skip()} text="Saltar" />
+                <div id="skip" className="button-backgound">
+                    <Button id="skip" click={() => skip()} text="Saltar" />
                 </div>
 
                 <Buho />
@@ -274,7 +340,12 @@ const Animation = ({ projects }) => {
                     </div>
                     <Bush />
                 </div>
+
             </section>
+
+            <div className="container-navbar">
+                <Navbar />
+            </div>
 
             <section className="b-projects">
                 <div className="projects__previous-button projects__button-scroll"></div>
@@ -289,7 +360,7 @@ const Animation = ({ projects }) => {
 
                 <div className="projects__next-button projects__button-scroll"></div>
             </section>
-        </>
+        </div>
     )
 }
 

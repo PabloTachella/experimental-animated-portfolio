@@ -3,7 +3,6 @@ import Button from './Button'
 import '../assets/styles/components/ProjectCard.css'
 
 const ProjectCard = ({ title, screenshot }) => {
-    console.log(title)
     return(
         <div className="b-card">
             <img className="b-card__screenshot" src={screenshot}></img>
