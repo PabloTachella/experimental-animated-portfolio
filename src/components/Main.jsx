@@ -18,29 +18,29 @@ const Main = ({ projects }) => {
 
     function skip() {
         clickedSkip = true
-        let buho = document.getElementsByClassName('head-and-body')[0]
-        let body = document.getElementsByClassName('body')[0]
-        let feet = document.getElementsByClassName('feet')
-        let eye = document.getElementsByClassName('eye')
-        let closedEye = document.getElementsByClassName('closed-eye')
-        let z1 = document.getElementsByClassName('z1')[0]
-        let z2 = document.getElementsByClassName('z2')[0]
-        let z3 = document.getElementsByClassName('z3')[0]
-        let belly = document.getElementsByClassName('belly')[0]
-        let sky1 = document.getElementsByClassName('sky1')[0]
-        let sky2 = document.getElementsByClassName('sky2')[0]
-        let sky3 = document.getElementsByClassName('sky3')[0]
-        let sky4 = document.getElementsByClassName('sky4')[0]
-        let stars = document.getElementsByClassName('stars')[0]
-        let moon = document.getElementsByClassName('moon')[0]
-        let brightness = document.getElementsByClassName('brightness')[0]
-        let branchs = document.getElementsByClassName('branchs')[0]
-        let darkenSky = document.getElementsByClassName('darken-sky')[0]
-        let containerBubble = document.getElementsByClassName('container-bubble')[0]
-        let textDialogue = document.getElementsByClassName('bubble__text')[0]
-        let dots = document.getElementsByClassName('dot')
-        let bushContainer = document.getElementsByClassName('bush-container')[0]
-        let bushes = document.querySelectorAll('.bush')
+        const buho = document.getElementsByClassName('head-and-body')[0]
+        const body = document.getElementsByClassName('body')[0]
+        const feet = document.getElementsByClassName('feet')
+        const eye = document.getElementsByClassName('eye')
+        const closedEye = document.getElementsByClassName('closed-eye')
+        const z1 = document.getElementsByClassName('z1')[0]
+        const z2 = document.getElementsByClassName('z2')[0]
+        const z3 = document.getElementsByClassName('z3')[0]
+        const belly = document.getElementsByClassName('belly')[0]
+        const sky1 = document.getElementsByClassName('sky1')[0]
+        const sky2 = document.getElementsByClassName('sky2')[0]
+        const sky3 = document.getElementsByClassName('sky3')[0]
+        const sky4 = document.getElementsByClassName('sky4')[0]
+        const stars = document.getElementsByClassName('stars')[0]
+        const moon = document.getElementsByClassName('moon')[0]
+        const brightness = document.getElementsByClassName('brightness')[0]
+        const branchs = document.getElementsByClassName('branchs')[0]
+        const darkenSky = document.getElementsByClassName('darken-sky')[0]
+        const containerBubble = document.getElementsByClassName('container-bubble')[0]
+        const textDialogue = document.getElementsByClassName('bubble__text')[0]
+        const dots = document.getElementsByClassName('dot')
+        const bushContainer = document.getElementsByClassName('bush-container')[0]
+        const bushes = document.querySelectorAll('.bush')
 
         const skipButton = document.querySelector('#skip')
 
@@ -72,7 +72,7 @@ const Main = ({ projects }) => {
             z1.classList.add('zzz-a-skip')
             z2.classList.add('zzz-a-skip')
             z3.classList.add('zzz-a-skip')
-            brightness.classList.add('brightness-a-skip')
+            brightness.style.transform = 'translate(-21em, -53em)'
         } else {
             buho.classList.replace('get-up', 'get-up-skip')
             closedEye[0].classList.replace('closed-eye-a', 'closed-eye-a-skip')
@@ -84,8 +84,12 @@ const Main = ({ projects }) => {
             z3.classList.replace('zzz-a', 'zzz-a-skip')
             body.classList.replace('get-up-belly', 'get-up-belly-skip')
             belly.classList.replace('get-up-belly', 'get-up-belly-skip')
-            brightness.classList.replace('brightness-a', 'brightness-a-skip')
+            brightness.classList.remove('brightness-a')
+            brightness.style.transform = 'translate(-21em, -53em)'
         }
+
+        brightness.style.opacity = '0.7'
+        darkenSky.style.opacity = '0.15'
 
         containerBubble.classList.add('appear-text-skip')
         textDialogue.textContent = "¿Ya conociste los proyectos realizados por Pablo?"
@@ -161,7 +165,7 @@ const Main = ({ projects }) => {
         const bushContainer = document.getElementsByClassName('bush-container')[0]
         const bushes = document.querySelectorAll('.bush')
         const rabbits = document.querySelectorAll('.rabbit-container')
-        
+
         let screenHeight = darkenSky.clientHeight
 
         const skipButton = document.querySelector('#skip')
@@ -205,19 +209,20 @@ const Main = ({ projects }) => {
                 z3.classList.add('zzz-a')
                 body.classList.add('get-up-belly')
                 belly.classList.add('get-up-belly')
-                sky1.classList.add('sky1-a')
-                sky2.classList.add('sky2-a')
-                sky3.classList.add('sky3-a')
-                sky4.classList.add('sky4-a')
+                sky1.style.opacity = '0'
+                sky2.style.opacity = '0'
+                sky3.style.opacity = '0'
+                sky4.style.opacity = '0'
                 brightness.classList.add('brightness-a')
             }
 
             function goDialogue() {
 
-                darkenSky.classList.add('appear-darken-sky')
+                darkenSky.style.opacity = '0.15'
 
                 if (!clickedSkip) {
-                    brightness.classList.remove('brightness-a', 'fade')
+                    brightness.classList.remove('brightness-a')
+                    brightness.style.opacity = '0.7'
                     containerBubble.classList.add('appear-text')
                     dots[0].classList.add('dot1-a')
                     dots[1].classList.add('dot2-a')
@@ -321,7 +326,7 @@ const Main = ({ projects }) => {
             /* Es necesario multiplicar por 1.5 para evitar ingresar a una condición erronea al estar en la 
                 sección profile y tocar projects e inmediatamente home sin darle tiempo al window.scroll a 
                 llegar a 1x de screenHeight */
-            if (window.scrollY > screenHeight*1.5) { 
+            if (window.scrollY > screenHeight * 1.5) {
                 navbarItems[2].addEventListener('click', scrollProfile)
                 markersNavbar[2].style.opacity = '0'
             } else {
@@ -427,7 +432,11 @@ const Main = ({ projects }) => {
             </section>
 
             <section className="b-profile">
-
+                <div className="b-profile__container">
+                    <div className="b-about-me"></div>
+                    <div className="b-skills"></div>
+                    <div className="b-courses"></div>
+                </div>
             </section>
         </div>
     )
